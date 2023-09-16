@@ -1,0 +1,71 @@
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: rgba(180,95,128,1);
+  display: flex;
+  justify-content: space-between;
+  padding-top:20px;
+
+  
+
+  .burger, .menu{
+    display:none;
+  }
+
+  button {
+    border-radius:20px;
+    padding:20px;
+    margin-bottom: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+  }
+  
+  .left-content {
+    align-self: flex-start;
+    justify-content: center;
+  }
+
+  .login-btn{
+    background-color: white;
+    color: rgb(197, 158, 165);
+    margin-left:100px;
+    margin-bottom:10px;
+    margin-right:10px;
+  }
+  
+  .logo {
+    font-family: 'Caveat';
+    font-size: 3.5rem;
+    color:#fff;
+    text-decoration: none;
+    text-shadow: 0.5px 0.5px 0.5px #858585;
+  }
+  
+  .right-content {
+    align-self: flex-end;
+    justify-content:center;
+    align-items: center;
+
+    .login-btn{
+      width:150px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .right-content {
+      display: none;
+    }
+    .burger {
+      display: flex;
+      i{
+        font-size: 3vh;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+

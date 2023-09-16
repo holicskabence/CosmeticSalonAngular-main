@@ -1,0 +1,150 @@
+
+.container {
+    border: 1px solid rgb(243, 240, 240);
+    border-radius: 10px;
+    box-shadow: 2px 6px 111px 26px rgba(0,0,0,0.13);
+    -webkit-box-shadow: 2px 6px 111px 26px rgba(0,0,0,0.13);
+    -moz-box-shadow: 2px 6px 111px 26px rgba(0,0,0,0.13);
+    padding:20px;
+    margin: 0 auto;
+    max-width: 600px;
+    min-height:700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffff;
+
+    ::ng-deep .mat-horizontal-stepper-header{
+      pointer-events: none !important;
+  }
+
+    div{
+        margin: 10px;
+    }
+    button{
+        background-color: #fff5f5;
+        border:1px solid #e6e3e3;
+        margin:10px;
+
+    }
+    .firststep{
+        button{
+            width: 100px;;
+        }
+
+    }
+    .secondstep{
+        h4,h3{
+            font-weight: 1.3rem;
+        }
+        mat-checkbox {
+          display: flex;
+          .servicediv{
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            div{
+              margin:0;
+            }
+            .servicediv-end{
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
+        }
+      
+    }
+    .thirdstep{
+      display:flex;
+      flex-direction: column;
+
+
+        h2{
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .infodiv{
+            display: flex;
+        }
+
+        .infodiv-start {
+            p{
+              font-style: italic;
+            }
+            margin-right: auto;
+          }
+          
+          .infodiv-end {
+            margin-left: auto;
+          }
+        button{
+            width:95%;
+        }
+        h3,h4{
+            font-weight: bold;
+        }
+        .servicediv{
+            display: flex;
+            margin:0px;
+            p{
+              font-style: italic;
+            }
+
+            .servicediv-start {
+              margin-right: auto;
+            }
+            
+            .servicediv-end {
+              margin-left: auto;
+            }
+        }
+        .costdiv {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          
+          .costdiv-start {
+            margin-right: auto;
+          }
+          
+          .costdiv-end {
+            margin-left: auto;
+          }
+
+        .buttons{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: 0;
+
+          .book-btn{
+            background-color: rgb(211, 112, 150);
+            color:#ffff;
+          }
+        }
+        
+    }
+  }
+  img{
+    width:250px;
+    height:150px;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      width: 400px;
+  
+      .thirdstep {
+        .infodiv {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  
+  

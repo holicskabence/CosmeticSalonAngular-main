@@ -1,0 +1,46 @@
+<nav>
+    <div class="left-content">
+        <a href="/home" class="logo">
+            Anikó Kozmetika
+        </a>
+    </div>
+    <div class="right-content">
+        <button mat-stroked-button color="accent" routerLink="#">
+            Galéria
+        </button>
+        <button mat-stroked-button color="accent">
+            Szolgáltatások
+        </button>
+
+        <button mat-stroked-button class="login-btn" *ngIf="!this.api.isLoggedIn()" routerLink="/login">
+            Bejelentkezés
+        </button>
+
+        <button mat-stroked-button [matMenuTriggerFor]="menu" *ngIf="this.api.isLoggedIn()" class="login-btn" color="accent">Profilom</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/list-appointments"><i class="fa-regular fa-calendar-check"></i> Foglalásaim</button>
+            <button mat-menu-item routerLink="/profile"><i class="fa-regular fa-address-card"></i> Profil módosítása</button>
+            <button mat-menu-item routerLink="/logout" *ngIf="this.api.isLoggedIn()"><i class="fa-solid fa-right-from-bracket"></i> Kijelentkezés</button>
+        </mat-menu>
+    </div>
+
+    <button mat-button [matMenuTriggerFor]="burger" class="burger" (click)="toggleMenu()">
+        <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
+        <i class="fa-solid fa-x" *ngIf="isMenuOpen"></i>
+    </button>
+
+    <mat-menu #burger="matMenu">
+        <button mat-menu-item>Galéria</button>
+        <button mat-menu-item>Szolgáltatások</button>
+        <button mat-menu-item *ngIf="!this.api.isLoggedIn()" routerLink="/login">Bejelentkezés</button>
+        <button mat-menu-item [matMenuTriggerFor]="profile" *ngIf="this.api.isLoggedIn()"
+            routerLink="/profile"><i class="fa-regular fa-user"></i> Profilom</button>
+        <button mat-menu-item *ngIf="this.api.isLoggedIn()" routerLink="/logout" class="exit-btn"><i class="fa-solid fa-right-from-bracket"></i> Kijelentkezés</button>
+    </mat-menu>
+
+    <mat-menu #profile="matMenu">
+        <button mat-menu-item routerLink="/list-appointments"><i class="fa-regular fa-calendar-check"></i> Foglalásaim</button>
+        <button mat-menu-item routerLink="/profile"><i class="fa-regular fa-address-card"></i> Profil módosítása</button>
+    </mat-menu>
+
+</nav>

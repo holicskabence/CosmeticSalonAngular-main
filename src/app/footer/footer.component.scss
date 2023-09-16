@@ -1,0 +1,21 @@
+footer{
+    background-color: #d4b9c3;
+    color:#fff;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    div{
+        margin-right:30px;
+    }
+}
+p:hover{
+    color:rgb(212, 211, 211);
+    cursor: pointer;
+}
+
+.bottomfooter{
+    background-color: #d1bbc3;
+    display: flex;
+    justify-content: center;
+}

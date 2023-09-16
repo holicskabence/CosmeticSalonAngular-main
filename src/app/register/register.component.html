@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="inputdiv">
+        <h1>Új fiók létrehozása</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Vezetéknév</mat-label>
+            <input matInput
+                [(ngModel)]="this.registerModel.firstName">
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Keresztnév</mat-label>
+            <input matInput
+                [(ngModel)]="this.registerModel.lastName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+
+            <mat-label>Email cím</mat-label>
+            <input
+                matInput
+                [(ngModel)]="this.registerModel.email"
+                [ngModel]="this.registerModel.userName"
+                [formControl]="this.email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="this.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Jelszó</mat-label>
+            <input 
+                matInput
+                type="password"
+                [(ngModel)]="this.registerModel.password">
+            <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+        
+
+        
+        <mat-checkbox
+            [(ngModel)]="this.acceptTermsAndConditions"
+        >
+            Elfogadom a felhasználói feltételeket
+        </mat-checkbox>
+        
+        <button
+            mat-flat-button
+            color="accent"
+            (click)="sendRegisterCredentials()"
+            [disabled]="!acceptTermsAndConditions"
+        >    
+            Register
+        </button>
+    </div>
+    
+</div>
+

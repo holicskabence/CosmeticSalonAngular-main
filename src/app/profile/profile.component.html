@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="userinfo">
+        <div class="topinfo">
+            <img src="assets/profilepic.png" alt="">
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <button (click)="openEditDialog()">Alapinformációk szerkesztése</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="infos">
+            <div class="firstname">
+                <p class="bold">Csaladnév</p>
+                <p>{{user.firstName}}</p>
+            </div>
+            <div class="lastname">
+                <p  class="bold">Utónév</p>
+                <p>{{user.lastName}}</p>
+            </div>
+            <div class="mobile">
+                <p class="bold">Mobilszám</p>
+                <p>{{user.mobil}}</p>
+            </div>
+            <div class="email">
+                <p class="bold">E-mail</p>
+                <p>{{user.email}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <button class="logout-btn" routerLink="/logout">Kijelentkezés</button>
+    </div>
+    <div class="actions">
+        <div class="notifications">
+            <h3 class="bold">Értesítéseim</h3>
+            <p>Frissítéseket küldünk találkozóiról, hírekről és marketing ajánlatokról.</p>
+            <mat-divider></mat-divider>
+            <div>
+                <div class="flexStart">
+                    <p class="bold">Text message appointment notifications</p>
+                    <p class="grey" >Receive texts based on your sender's settings</p>
+                </div>
+                <div class="flexEnd">
+                    <mat-slide-toggle ></mat-slide-toggle>
+                </div>
+            </div>
+            <div>
+                <div class="flexStart">
+                    <p class="bold">Email marketing notifications</p>
+                    <p class="grey">Receive offers and news via email</p>
+                </div>
+                <div class="flexEnd">
+                    <mat-slide-toggle ></mat-slide-toggle>
+                </div>
+            </div>
+            <div>
+                <div class="flexStart">
+                    <p class="bold">Text message marketing notifications</p>
+                    <p class="grey">If you opted out previously by texting STOP, please reply with START to opt back in</p>
+                </div>
+                <div class="flexEnd">
+                    <mat-slide-toggle ></mat-slide-toggle>
+                </div>
+            </div>
+        </div>
+        <div class="deleteAccount">
+            <h3 class="bold">Fiók törlés</h3>
+            <mat-divider></mat-divider>
+            <p>Biztosan törölni akarod a fiókod?</p>
+            <button (click)="openDeleteDialog()">Törlöm a fiókom</button>
+        </div>
+    </div>
+
+</div>
+

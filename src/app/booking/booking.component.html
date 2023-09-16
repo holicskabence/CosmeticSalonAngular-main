@@ -1,0 +1,103 @@
+<div class="container">
+  <mat-stepper #stepper class="stepper">
+    <mat-step>
+      <ng-template matStepLabel>Válassz időpontot</ng-template>
+      <div class="firststep">
+        <mat-tab-group >
+          <mat-tab *ngFor="let item of freeDates">
+            <ng-template mat-tab-label>
+              <div (click)="getFreeHours(item)">
+                <p>{{ item.dayMonth }}</p>
+                <p>{{ item.dayName }}</p>
+              </div>
+            </ng-template>
+            <button (click)="setAppointmentTime(date)"  *ngFor="let date of selectedDate.freeHours" mat-button
+            matStepperNext>{{formatHours(date)}}</button>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Szolgáltatás választása</ng-template>
+      <div class="secondstep">
+        <section>
+          <h3>Válassz szolgáltatást:</h3>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let serviceGroup of serviceGroups">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ serviceGroup.category }}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{ getSelectedServicesDescription(serviceGroup.category) }}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div *ngFor="let service of serviceGroup.services">
+                <mat-checkbox class="custom-checkbox" (change)="onServiceSelectionChange(service)" [checked]="isServiceSelected(service)">
+                  <div class="servicediv">
+                    <div class="servicediv-start">
+                      {{ service.name }}
+                    </div>
+                    <div class="servicediv-end">
+                      {{service.cost}} Ft
+                    </div>
+                  </div>
+                </mat-checkbox>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </section>
+        <div>
+          <button mat-button matStepperPrevious>Vissza</button>
+          <button mat-button matStepperNext [disabled]="!hasService()">Következő</button>
+        </div>
+      </div>
+    </mat-step>
+    
+
+    <mat-step>
+      <div class="thirdstep">
+        <div>
+          <h2>{{formatDate(appointment.time)}}.órakor</h2>
+        </div>
+        <div class="infodiv">
+          <div class="infodiv-start">
+            <p>Anikó kozmetika</p>
+            <p>8640 Fonyód Hegyalja utca 9.</p>
+          </div>
+          <div class="infodiv-end">
+            <img src="assets/login.jpg">
+          </div>
+        </div>
+        <button mat-button (click)="stepper.reset()" class="chanegAppointment-btn">Időpont módosítása</button>
+        <button mat-button matStepperPrevious class="chanegAppointment-btn">Szolgáltatás módosítása</button>
+        <div>
+          <mat-divider></mat-divider>
+          <h3>Időpont részletek</h3>
+
+          <div class="servicediv" *ngFor="let service of selectedServices">
+            <div class="servicediv-start">
+              <p>{{service.category}} - {{service.name}}</p>
+            </div>
+            <div class="servicediv-end">
+              <p>{{service.cost}} Ft</p>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div class="costdiv">
+          <h4 class="costdiv-start">Összesen</h4>
+          <mat-divider></mat-divider>
+          <h4 class="costdiv-end">{{appointment.cost}} Ft</h4>
+        </div>
+        <div class="buttons">
+          <mat-divider></mat-divider>
+          <button class="book-btn" mat-button (click)="sendAppointment()" >Foglalás</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+</div>

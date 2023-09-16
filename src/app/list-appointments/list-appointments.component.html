@@ -1,0 +1,68 @@
+<div class="container" *ngIf="appointments.length > 0">
+    <div class="appointments">
+        <h3>Korábbi időpontok: <span>({{appointments.length}})</span></h3>
+        <div 
+        class="appointmentdiv" 
+        *ngFor="let appointment of appointments" 
+        [ngClass]="{ 'selected': appointment.id === selectedAppointment.id }"
+        (click)="getAppointment(appointment)"
+        [matBadge]="getBadgeContent(appointment)"
+        >
+            <img src="assets/login.jpg" alt="">
+            <div class="info">
+                <p>{{ formatDate(appointment.time) }}</p>
+                <p>{{ getServices(appointment) }}</p>
+                
+            </div>
+        </div>
+    </div> 
+
+    <div class="selectedAppointment">
+        <div class="content">
+            <div>
+                <span *ngIf="!isAvailable()" class="succes"><i class="fa-regular fa-clock"></i>Teljesített</span>
+                <h2>{{formatDate(selectedAppointment.time)}} órakor</h2>
+              </div>
+              <div class="infodiv">
+                <div class="infodiv-start">
+                  <p>Anikó kozmetika</p>
+                  <p>8640 Fonyód Hegyalja utca 9.</p>
+                </div>
+                <div class="infodiv-end">
+                  <img src="assets/login.jpg">
+                </div>
+              </div>
+              <button mat-button routerLink="/booking" >Ismételt foglalás</button>
+              <button class="delete-btn" *ngIf="isAvailable()" (click)="openDialog()" mat-button>Időpont törlés</button>
+              <div>
+                <mat-divider></mat-divider>
+                <h3>Időpont részletek</h3>
+                <div class="servicediv" *ngFor="let service of selectedServices">
+                    <div class="servicediv-start">
+                      <p>{{service.name}}</p>
+                    </div>
+                    <div class="servicediv-end">
+                      <p>{{service.cost}} Ft</p>
+                    </div>
+                  </div>
+                  <mat-divider></mat-divider>
+                </div>
+
+              <div class="costdiv">
+                <h4 class="costdiv-start">Összesen</h4>
+                <mat-divider></mat-divider>
+                <h4 class="costdiv-end">{{selectedAppointment.cost}} Ft</h4>
+              </div>
+              <div>
+                <mat-divider></mat-divider>
+              </div>
+              <div class="resignation">
+                  <h4>Lemondási szabályzat </h4>
+                  <p>Kérlek kerüld a lemondást 24 óra órával az időpontod előtt.</p>
+              </div>
+            </div>
+        </div>
+</div>
+<div class="noappointment" *ngIf="appointments.length < 0">
+  <h1>Még nem volt időpontod</h1>
+</div>
